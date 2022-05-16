@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+
+    <title>Document</title>
+    {% include "menu.html" %}
+    {% load static %}
+  </head>
+
+
+
+  <body>
+
+    <details>
+      <summary><h2>INFO</h2></summary>
+      <p>This is same as previous table, but with empty cells and rejection_percentage column removed using python pandas, therefore showing only cars which failed inspection etc. Search funtion is javascript</p>
+        <details>
+         <SUMMary>Code</SUMMary>
+         <pre>
+          <code>
+            import pandas as pd
+
+
+            df = pd.read_json('multipage/vehicle_data.json', encoding = 'ISO-8859-1')
+            
+            print(df.info)
+            
+            nan_value = float("NaN")
+            
+            df.replace("", nan_value, inplace=True)
+            
+            df.dropna(subset = ["reason_1"], inplace=True)
+            df.dropna(subset = ["reason_2"], inplace=True)
+            df.dropna(subset = ["reason_3"], inplace=True)
+            
+            del df['rejection_percentage']
+            
+            html = df.to_html()
+            
+            print(df.sample)
+            
+            text_file = open("templates/junk/cleaned.html", "w")
+            text_file.write(html)
+            text_file.close()
+          </code>
+        </pre>
+        <pre>
+          <code>
+          function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementsByClassName("dataframe")[0];
+            tr = table.getElementsByTagName("tr");
+          
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[1];
+              if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          }
+        </code>
+      </pre>
+       </details>
+    </details>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by car manufacturer.."> 
+
+    {% include "junk/cleaned.html" %}
+
+  </body>
+</html>
