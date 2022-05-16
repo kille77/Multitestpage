@@ -17,9 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
-    path('result/', views.result, name='result')
+    path('result/', views.result, name='result'),
+    path('Cardata/', views.Cardata, name='Cardata'),
+    path('Cardata1/', views.Cardata1, name='Cardata1'),
+    path('titanic/', views.titanic, name='titanic')
+
 ]

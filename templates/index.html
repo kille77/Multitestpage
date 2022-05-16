@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
   <head>
-    <meta charset="utf-8">
 
-    <title></title>
-    {% load static%}
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-  </head>
-  <body>
+    <title>Document</title>
     {% include "menu.html" %}
-
-    <h1>Home</h1>
-       <form  action="{% url 'result' %}">
-         {% csrf_token %}
-           <input type="text" name="user_input">
-           <input type="submit" value="Click me">
-       </form>
+    {% load static %}
+  </head>
 
 
 
-<!---
-<img src="{% static 'download.jpg' %}" >
-<button onclick="buttonFunc()"> click me </button>
-!--->
+  <body>
+
+
+       
 
 
 
 
 
-    <script type="text/javascript" src="{% static 'main.js' %}">
 
-    </script>
+
+
+
+ 
+
   </body>
 </html>
