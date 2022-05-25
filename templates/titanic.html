@@ -15,10 +15,12 @@
 
 
     <details>
-        <p> </p>
-           <SUMMary>Code</SUMMary>
-           <pre>
-            <code>
+      <summary><h2>INFO</h2></summary>
+      <p></p>
+        <details>
+         <SUMMary>Code</SUMMary>
+         <pre>
+          <code>
                 from sklearn.model_selection import train_test_split
                 import pickle
                 from sklearn.ensemble import RandomForestClassifier
@@ -87,14 +89,20 @@
                 prediction = randomforest.predict(x)
                 return prediction
                 x = [[pclass,sex,age,sibsp,parch,fare,embarked,title]]
-            </code>
-          </pre>
-        </details>
+              </code>
+            </pre>
+             </details>
+          </details>
+      
 
  
        <form class="formi" action="{% url 'result' %}">
          {% csrf_token %}
-           <h1>Titanic survived / not surviced Machine learn prediction model</h1>
+           <h1>Test if you survived titanic voyage</h1>
+           <p>Name</p>
+           <input type="text" name="name" placeholder="name">
+           <br>
+           <br>
            <p>Passenger class 1,2,3</p>
            <input type="text" name="pclass" placeholder="Pclass">
            <br>
